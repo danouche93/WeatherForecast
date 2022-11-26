@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+}
+
+.search-input {
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: #6565f9;
+    padding: 10px;
+}
