@@ -1,0 +1,5 @@
+.list-container{
+    padding: 10px;
+    height: 450px;
+    overflow-y: auto;
+}

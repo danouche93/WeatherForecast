@@ -1,3 +1,14 @@
-<p>
-  cities-list works!
-</p>
+<div class="list-container">
+  <div class="card-group">
+    <div *ngFor="let city of cities" style="margin:10px">
+      <div class="card" style="width: 18rem;">
+        <img *ngIf="city.image" class="card-img-top" [src]="city.image.web" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{city.matching_full_name}}</h5>
+          <p class="card-text">Local time : {{city.localTime | date : 'hh:mm a'}}</p>
+          <a href="#" class="btn btn-primary">Weather view</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
