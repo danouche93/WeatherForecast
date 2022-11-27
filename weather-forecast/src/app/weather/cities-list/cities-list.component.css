@@ -3,3 +3,7 @@
     height: 450px;
     overflow-y: auto;
 }
+
+.card-img-top{
+    height: 125px;
+}

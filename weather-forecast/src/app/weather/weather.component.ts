@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { City } from '../models/city-model';
+import { City } from '../models/city.model';
 import { TeleportService } from '../services/teleport/teleport.service';
 
 @Component({
@@ -10,18 +10,25 @@ import { TeleportService } from '../services/teleport/teleport.service';
 export class WeatherComponent implements OnInit {
 
   cities: City[] = [];
+  searchText: string;
 
   constructor(private teleportService: TeleportService) { }
 
   ngOnInit() {
-    this.teleportService.GetCities().subscribe(res => {
+    this.getCities();
+  }
+
+  getCities(){
+    this.teleportService.GetCities(this.searchText).subscribe(res => {
       this.cities = res;
     }, err => {
       console.log(err);
     })
   }
 
-  onInputSearch($event) {
+  onInputSearch(event) {
+    this.searchText = event.text;
+    this.getCities();
   }
 
 }

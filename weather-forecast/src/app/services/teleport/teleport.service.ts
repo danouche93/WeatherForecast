@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { City } from 'src/app/models/city-model';
-import { Image } from 'src/app/models/image-model';
+import { City } from 'src/app/models/city.model';
+import { Image } from 'src/app/models/image.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeleportService {
 
-  apiUrl = 'https://api.teleport.org/api/cities/';
+  apiUrl = 'https://api.teleport.org/api/cities';
 
   constructor(private httpClient: HttpClient) { }
 
-  GetCities(): Observable<City[]> {
+  GetCities(name: string = null): Observable<City[]> {
+    var route = this.apiUrl;
+    if(name) route += "?search=" + name;
     return new Observable((observer) => {
-      this.httpClient.get(this.apiUrl).subscribe(res => {
+      this.httpClient.get(route).subscribe(res => {
         observer.next(res['_embedded']['city:search-results']);
         observer.complete();
       }, err => {
@@ -74,5 +76,17 @@ export class TeleportService {
         observer.error(err);
       })
     })
+  }
+
+  GetLocation(city: City): Observable<Location> {
+    return new Observable((observer) => {
+      this.httpClient.get(city._links['city:item'].href).subscribe((res: any) => {
+        observer.next(res.location.latlon);
+        observer.complete();
+      }, err => {
+        console.log(err);
+        observer.error(err);
+      });
+    });
   }
 }
