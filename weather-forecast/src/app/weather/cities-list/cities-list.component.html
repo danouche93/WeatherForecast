@@ -6,7 +6,7 @@
         <div class="card-body">
           <h5 class="card-title">{{city.matching_full_name}}</h5>
           <p class="card-text">Local time : {{city.localTime | date : 'MM/dd/yyyy hh:mm a'}}</p>
-          <button (click)="weatherView(ModalView)" class="btn btn-primary">Weather view</button>
+          <button (click)="weatherView(ModalView, city)" class="btn btn-primary">Weather view</button>
         </div>
       </div>
     </div>
@@ -14,5 +14,5 @@
 </div>
 
 <ng-template #ModalView let-modal>
-  <app-weather-view></app-weather-view>
+  <app-weather-view [city]="cityModal"></app-weather-view>
 </ng-template>

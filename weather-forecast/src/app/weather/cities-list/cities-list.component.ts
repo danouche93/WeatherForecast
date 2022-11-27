@@ -13,6 +13,7 @@ import { TeleportService } from 'src/app/services/teleport/teleport.service';
 export class CitiesListComponent implements OnChanges {
 
   @Input() cities: City[] = [];
+  cityModal: City;
 
   constructor(private teleportService: TeleportService, private modalService: NgbModal) { }
 
@@ -30,7 +31,8 @@ export class CitiesListComponent implements OnChanges {
     })
   }
 
-  weatherView(modal) {
+  weatherView(modal, city: City) {
+    this.cityModal = city;
     this.modalService.open(modal, { size: "lg" });
   }
 
