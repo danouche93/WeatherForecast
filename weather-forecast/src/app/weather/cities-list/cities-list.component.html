@@ -3,7 +3,7 @@
     <div *ngFor="let city of cities" style="margin:10px">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" [src]="city.image ? city.image.web : 'src/assets/images/no-image.png'"
-          alt="Card image cap">
+          alt="Card image cap" loading="lazy">
         <div class="card-body">
           <h5 class="card-title">{{city.matching_full_name}}</h5>
           <p class="card-text">Local time : {{city.localTime | date : 'MM/dd/yyyy hh:mm a'}}</p>
@@ -11,6 +11,7 @@
         </div>
       </div>
     </div>
+    <div *ngIf="cities.length == 0" class="text-notFound">No cities found</div>
   </div>
 </div>
 
