@@ -36,6 +36,9 @@ export class TeleportService {
             console.log(err);
             observer.error(err);
           })
+        } else {
+          observer.next();
+          observer.complete();
         }
       }, err => {
         console.log(err);
@@ -47,7 +50,7 @@ export class TeleportService {
   GetCityLocalTime(city: City): Observable<Date> {
     return new Observable((observer) => {
       this.httpClient.get(city._links['city:item'].href).subscribe((res: any) => {
-        if (res._links['city:urban_area']) {
+        if (res._links['city:timezone']) {
           this.httpClient.get(res._links['city:timezone'].href + 'offsets/?date=' + new Date().toISOString()).subscribe((res: any) => {
             let now = new Date();
             let currentOffset = now.getTimezoneOffset();
@@ -62,6 +65,9 @@ export class TeleportService {
             console.log(err);
             observer.error(err);
           })
+        } else {
+          observer.next();
+          observer.complete();
         }
       }, err => {
         console.log(err);

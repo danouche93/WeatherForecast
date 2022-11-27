@@ -5,7 +5,7 @@
         <img *ngIf="city.image" class="card-img-top" [src]="city.image.web" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{city.matching_full_name}}</h5>
-          <p class="card-text">Local time : {{city.localTime | date : 'hh:mm a'}}</p>
+          <p class="card-text">Local time : {{city.localTime | date : 'MM/dd/yyyy hh:mm a'}}</p>
           <a href="#" class="btn btn-primary">Weather view</a>
         </div>
       </div>
