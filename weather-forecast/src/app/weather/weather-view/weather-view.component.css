@@ -1,18 +1,26 @@
-.today-weather{
-    text-align: center;
+.today-title{
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
-#weatherInfoRow {
+.weather-days-container {
     display: inline-flex;
     text-align: center;
 }
 
 
-#info {
+.info {
     display:flex;
     padding-top: 25px;
+    margin: auto;
 }
 
-#temp {
+.temp {
     padding-right:10px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.weather-day{
+    display: flex;
 }

@@ -4,25 +4,24 @@
   <div *ngIf="city && weather" class="card">
     <div class="card-body">
       <div class="row">
-        <div class="today-weather">
-          <h5>Today</h5>
-          <b>{{nowDate | date: 'EEEEEE, d MMMM y'}}</b> <br>
-          {{city.matching_full_name}}
-          <br>
-          <img [src]="'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png'" />
-          <br>
-          {{weather.list[0].weather[0].main}}
-          <br>
-          <h4>{{weather.list[0].main.temp}}° C</h4>
+        <div class="col-md-auto today-title">
+          <h5>{{city.matching_full_name}}</h5>
+          <b>{{nowDate | date: 'EEE, d MMMM y'}}</b>
         </div>
+        <div class="col-md-auto">
+          <img [src]="'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png'" />
+          <span class="temp">{{weather.list[0].main.temp}}° C</span> |
+          {{weather.list[0].weather[0].main}}
+        </div>
+        <hr />
         <div class="col">
           <br>
-          <div class="row" id="weatherInfoRow">
-            <div class="col-6" *ngFor="let weather of fiveDaysWeather | slice:1">
+          <div class="row weather-days-container">
+            <div class="col-6 weather-day" *ngFor="let weather of fiveDaysWeather | slice:1">
               <img [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" />
-              <span id="info">
-                <h5 id="temp">{{weather.main.temp}}° C</h5> |
-                {{weather.dt_txt | date: 'EEEEEE, d MMMM'}}
+              <span class="info">
+                <span class="temp">{{weather.main.temp}}° C</span> |
+                {{weather.dt_txt | date: 'EEE, d MMMM'}}
               </span>
             </div>
           </div>
