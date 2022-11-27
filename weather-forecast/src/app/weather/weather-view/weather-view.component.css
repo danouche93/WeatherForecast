@@ -1,0 +1,18 @@
+.today-weather{
+    text-align: center;
+}
+
+#weatherInfoRow {
+    display: inline-flex;
+    text-align: center;
+}
+
+
+#info {
+    display:flex;
+    padding-top: 25px;
+}
+
+#temp {
+    padding-right:10px;
+}

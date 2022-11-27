@@ -11,6 +11,7 @@ export class WeatherComponent implements OnInit {
 
   cities: City[] = [];
   searchText: string;
+  loading: boolean = false;
 
   constructor(private teleportService: TeleportService) { }
 
@@ -18,10 +19,13 @@ export class WeatherComponent implements OnInit {
     this.findCities();
   }
 
-  findCities(){
+  findCities() {
+    this.loading = true;
     this.teleportService.FindCities(this.searchText).subscribe(res => {
       this.cities = res;
+      this.loading = false;
     }, err => {
+      this.loading = false;
       console.log(err);
     })
   }

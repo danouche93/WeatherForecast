@@ -1,3 +1,33 @@
-<p>
-  weather-view works!
-</p>
+<div>
+  <app-loader *ngIf="loading">
+  </app-loader>
+  <div *ngIf="city && weather" class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="today-weather">
+          <h5>Today</h5>
+          <b>{{nowDate | date: 'EEEEEE, d MMMM y'}}</b> <br>
+          {{city.matching_full_name}}
+          <br>
+          <img [src]="'https://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '@2x.png'" />
+          <br>
+          {{weather.list[0].weather[0].main}}
+          <br>
+          <h4>{{weather.list[0].main.temp}}° C</h4>
+        </div>
+        <div class="col">
+          <br>
+          <div class="row" id="weatherInfoRow">
+            <div class="col-6" *ngFor="let weather of fiveDaysWeather | slice:1">
+              <img [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" />
+              <span id="info">
+                <h5 id="temp">{{weather.main.temp}}° C</h5> |
+                {{weather.dt_txt | date: 'EEEEEE, d MMMM'}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

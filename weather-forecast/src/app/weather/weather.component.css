@@ -1,3 +1,8 @@
+.card {
+    background-color: #ced0ed;
+    height: 100vh;
+}
+
 .search-text {
     color: black;
     font-weight: 600;

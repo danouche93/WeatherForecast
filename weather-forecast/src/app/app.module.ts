@@ -11,6 +11,7 @@ import { InputComponent } from './ui/input/input.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoaderComponent } from './ui/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CitiesListComponent,
     WeatherViewComponent,
     HeaderComponent,
-    InputComponent
+    InputComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

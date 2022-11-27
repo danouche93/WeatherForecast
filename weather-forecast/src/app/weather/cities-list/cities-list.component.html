@@ -13,6 +13,13 @@
   </div>
 </div>
 
-<ng-template #ModalView let-modal>
-  <app-weather-view [city]="cityModal"></app-weather-view>
+<ng-template #ModalView let-modal let-c="close" let-d="dismiss">
+  <div class="modal-content">
+    <div class="modal-body">
+      <app-weather-view [city]="cityModal"></app-weather-view>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="c()">Close</button>
+    </div>
+  </div>
 </ng-template>
