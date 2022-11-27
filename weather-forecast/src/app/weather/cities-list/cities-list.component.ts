@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { forkJoin } from 'rxjs';
 import { City } from 'src/app/models/city.model';
 import { Location } from 'src/app/models/location.model';
@@ -13,7 +14,7 @@ export class CitiesListComponent implements OnChanges {
 
   @Input() cities: City[] = [];
 
-  constructor(private teleportService: TeleportService) { }
+  constructor(private teleportService: TeleportService, private modalService: NgbModal) { }
 
   ngOnChanges() {
     this.cities.map(c => {
@@ -27,6 +28,10 @@ export class CitiesListComponent implements OnChanges {
         console.log(err);
       })
     })
+  }
+
+  weatherView(modal) {
+    this.modalService.open(modal, { size: "lg" });
   }
 
 }
