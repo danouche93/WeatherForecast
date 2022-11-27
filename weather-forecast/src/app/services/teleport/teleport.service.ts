@@ -13,7 +13,7 @@ export class TeleportService {
 
   constructor(private httpClient: HttpClient) { }
 
-  GetCities(name: string = null): Observable<City[]> {
+  FindCities(name: string = null): Observable<City[]> {
     var route = this.apiUrl;
     if(name) route += "?search=" + name;
     return new Observable((observer) => {

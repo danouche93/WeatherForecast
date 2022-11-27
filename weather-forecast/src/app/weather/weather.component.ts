@@ -15,11 +15,11 @@ export class WeatherComponent implements OnInit {
   constructor(private teleportService: TeleportService) { }
 
   ngOnInit() {
-    this.getCities();
+    this.findCities();
   }
 
-  getCities(){
-    this.teleportService.GetCities(this.searchText).subscribe(res => {
+  findCities(){
+    this.teleportService.FindCities(this.searchText).subscribe(res => {
       this.cities = res;
     }, err => {
       console.log(err);
@@ -28,7 +28,7 @@ export class WeatherComponent implements OnInit {
 
   onInputSearch(event) {
     this.searchText = event.text;
-    this.getCities();
+    this.findCities();
   }
 
 }
